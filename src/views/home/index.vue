@@ -3,6 +3,14 @@
     <Header/>
     <CaseNum :caseNumData="caseNumData"/>
     <Map/>
+    <MySwiper/>
+    <Trip/>
+    <van-popup position="bottom" closeable round v-model="show">
+      <van-notice-bar
+        :scrollable="false"
+        text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
+      />
+    </van-popup>
   </div>
 </template>
 
@@ -11,11 +19,14 @@ import Map from '@/components/Map'
 import API from '@/api/interface'
 import Header from '@/components/Header'
 import CaseNum from '@/components/CaseNum'
+import MySwiper from '@/components/MySwiper'
+import Trip from '@/components/Trip.vue'
 
 export default {
-  components: { Header, CaseNum, Map },
+  components: { Header, CaseNum, Map, MySwiper, Trip },
   data () {
     return {
+      show: false,
       caseNumData: {},
       newsData: []
     }
