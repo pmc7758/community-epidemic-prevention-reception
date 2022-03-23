@@ -15,8 +15,8 @@ export default {
   data () {
     return {
       options: [],
-      curCityValue: '10056',
-      toCityValue: '10004',
+      curCityValue: '10065',
+      toCityValue: '10028',
       policy: []
     }
   },
@@ -64,6 +64,8 @@ export default {
       api.getCitysPolicy({ from: this.curCityValue, to: this.toCityValue, key: '171e165a7d991c5f6ecd5194c54778ef' })
         .then(res => {
           console.log(res)
+          this.policy = res
+          this.$emit('func', this.policy)
         })
     }
   }

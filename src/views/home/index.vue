@@ -4,11 +4,12 @@
     <CaseNum :caseNumData="caseNumData"/>
     <Map/>
     <MySwiper/>
-    <Trip/>
+    <Trip @func="showPolicy"/>
     <van-popup position="bottom" closeable round v-model="show">
       <van-notice-bar
+        wrapable
         :scrollable="false"
-        text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
+        :text="policy"
       />
     </van-popup>
   </div>
@@ -28,7 +29,8 @@ export default {
     return {
       show: false,
       caseNumData: {},
-      newsData: []
+      newsData: [],
+      policy: ''
     }
   },
   created () {
@@ -52,6 +54,12 @@ export default {
         curedIncr: res.newslist[0].desc.curedIncr // 相比昨天新增治愈人数
       }
     })
+  },
+  methods: {
+    showPolicy (res) {
+      this.policy = res.result.from_info.low_in_desc
+      this.show = true
+    }
   }
 
 }

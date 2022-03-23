@@ -3,12 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'amfe-flexible'
-import { Form, Field, NavBar, Button, Tabbar, TabbarItem, Grid, GridItem, Swipe, SwipeItem, Lazyload, Image as VanImage, Cascader, Popup, NoticeBar } from 'vant'
+import { Form, Field, NavBar, Button, Tabbar, TabbarItem, Grid, GridItem, Swipe, SwipeItem, Lazyload, Image as VanImage, Cascader, Popup, NoticeBar, List } from 'vant'
 import Echarts from '@/plugins/echarts'
 import '../node_modules/echarts/map/js/china'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
 
+Vue.use(List)
 Vue.use(NoticeBar)
 Vue.use(Popup)
 Vue.use(Button)

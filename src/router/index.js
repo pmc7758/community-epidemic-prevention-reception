@@ -4,6 +4,8 @@ import Login from '@/views/login/index'
 import Home from '@/views/home'
 import User from '@/views/user'
 import Layout from '@/views/layout'
+import Vod from '@/views/vod'
+import Goods from '@/views/goods'
 
 Vue.use(VueRouter)
 
@@ -27,6 +29,14 @@ const routes = [
       {
         path: 'user',
         component: User
+      },
+      {
+        path: 'vod',
+        component: Vod
+      },
+      {
+        path: 'goods',
+        component: Goods
       }
     ]
   }

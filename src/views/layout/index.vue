@@ -8,8 +8,8 @@
     <div>
         <van-tabbar v-model="active" route>
             <van-tabbar-item to="/layout/home" icon="home-o">首页</van-tabbar-item>
-            <van-tabbar-item to="/" icon="video-o">视频</van-tabbar-item>
-            <van-tabbar-item icon="cart-o">仓库</van-tabbar-item>
+            <van-tabbar-item to="/layout/vod" icon="video-o">视频</van-tabbar-item>
+            <van-tabbar-item to="/layout/goods" icon="cart-o">仓库</van-tabbar-item>
             <van-tabbar-item to="/layout/user" icon="friends-o">我的</van-tabbar-item>
         </van-tabbar>
     </div>
