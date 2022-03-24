@@ -6,6 +6,7 @@ import User from '@/views/user'
 import Layout from '@/views/layout'
 import Vod from '@/views/vod'
 import Goods from '@/views/goods'
+import { getToken } from '@/utils/token'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,9 @@ const routes = [
       },
       {
         path: 'user',
+        meta: {
+          requiresAuth: true // 要求验证的页面,在此情况下其子页面也会被验证.
+        },
         component: User
       },
       {
@@ -44,6 +48,20 @@ const routes = [
 
 const router = new VueRouter({
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) { // 哪些需要验证
+    if (!getToken()) { // token存在条件
+      next({
+        path: '/login' // 验证失败要跳转的页面
+      })
+    } else {
+      next()
+    }
+  } else {
+    next() // 确保一定要调用 next()
+  }
 })
 
 export default router

@@ -1,10 +1,10 @@
 <template>
     <div>
-        <van-nav-bar title="登 录"/>
+        <van-nav-bar @click-left="onClickLeft" left-arrow title="登 录"/>
         <van-form>
             <van-field
-              v-model="user.username"
-              name="username"
+              v-model="user.phone"
+              name="phone"
               label="账户"
               placeholder="请输入手机号"
               :rules="[{ required: true, message: '请填写11位手机号', pattern: /^1[3-9]\d{9}$/ }]"
@@ -18,31 +18,47 @@
               :rules="[{ required: true, message: '密码不能为空' }]"
             />
             <div style="margin: 16px;">
-                <van-button round block type="info" native-type="submit" :disabled="isLoading" :loading="isLoading" @click="login">登 录</van-button>
+                <van-button
+                  round block
+                  type="info"
+                  loading-text="登录中..."
+                  loading-type="spinner"
+                  native-type="submit"
+                  :disabled="isLoading"
+                  :loading="isLoading"
+                  @click="login">登 录</van-button>
             </div>
         </van-form>
     </div>
 </template>
 
 <script>
-// import { loginAPI } from '@/api/login'
 import { setToken } from '@/utils/token'
+import * as loginAPI from '@/api/login'
 
 export default {
   data () {
     return {
+      isLoading: false,
       user: {
-        username: '',
+        phone: '',
         password: ''
       }
     }
   },
   methods: {
-    login (user) {
+    login () {
       this.isLoading = true
-      // loginAPI.login(this.user)
-      setToken()
+      loginAPI.login(this.user)
+        .then(response => {
+          setToken(response.data)
+          console.log(response.data)
+          this.$router.push('/layout/user')
+        })
       this.isLoading = false
+    },
+    onClickLeft () {
+      this.$router.push('/')
     }
   }
 }

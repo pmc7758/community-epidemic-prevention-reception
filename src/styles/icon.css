@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3273645 */
+  src: url('//at.alicdn.com/t/font_3273645_j8zekz3xchf.woff2?t=1648100486824') format('woff2'),
+       url('//at.alicdn.com/t/font_3273645_j8zekz3xchf.woff?t=1648100486824') format('woff'),
+       url('//at.alicdn.com/t/font_3273645_j8zekz3xchf.ttf?t=1648100486824') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.my-icon-wodekehu:before {
+  content: "\e604";
+  color: #1296db;
+}
+
+.my-icon-tuichudenglu:before {
+  content: "\e64c";
+  color: #1296db;
+}
+
+.my-icon-wodedingdan:before {
+  content: "\e749";
+  color: #1296db;
+}
+
+.my-icon-tiwendan:before {
+  content: "\e60f";
+  color: #1296db;
+}
+
+.my-icon-erweima:before {
+  content: "\e600";
+  color: #1296db;
+}
