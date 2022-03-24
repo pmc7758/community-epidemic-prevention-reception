@@ -6,6 +6,8 @@ import User from '@/views/user'
 import Layout from '@/views/layout'
 import Vod from '@/views/vod'
 import Goods from '@/views/goods'
+import Info from '@/views/user/Info.vue'
+import EditInfo from '@/views/user/EditInfo'
 import { getToken } from '@/utils/token'
 
 Vue.use(VueRouter)
@@ -43,6 +45,14 @@ const routes = [
         component: Goods
       }
     ]
+  },
+  {
+    path: '/info',
+    component: Info
+  },
+  {
+    path: '/edit',
+    component: EditInfo
   }
 ]
 

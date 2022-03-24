@@ -3,13 +3,16 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'amfe-flexible'
-import { Form, Field, NavBar, Button, Tabbar, TabbarItem, Grid, GridItem, Swipe, SwipeItem, Lazyload, Image as VanImage, Cascader, Popup, NoticeBar, List, Card, SubmitBar, Search, Col, Row, Notify, Cell, CellGroup, Icon, Divider } from 'vant'
+import { Form, Field, NavBar, Button, Tabbar, TabbarItem, Grid, GridItem, Swipe, SwipeItem, Lazyload, Image as VanImage, Cascader, Popup, NoticeBar, List, Card, SubmitBar, Search, Col, Row, Notify, Cell, CellGroup, Icon, Divider, RadioGroup, Radio, Uploader } from 'vant'
 import Echarts from '@/plugins/echarts'
 import '../node_modules/echarts/map/js/china'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
 import '@/styles/icon.css'
 
+Vue.use(Uploader)
+Vue.use(Radio)
+Vue.use(RadioGroup)
 Vue.use(Divider)
 Vue.use(Icon)
 Vue.use(Cell)
@@ -47,5 +50,8 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  beforeCreate () {
+    Vue.prototype.$bus = this
+  }
 }).$mount('#app')
