@@ -8,6 +8,7 @@ import Vod from '@/views/vod'
 import Goods from '@/views/goods'
 import Info from '@/views/user/Info.vue'
 import EditInfo from '@/views/user/EditInfo'
+import QRcode from '@/views/user/QRcode'
 import { getToken } from '@/utils/token'
 
 Vue.use(VueRouter)
@@ -53,6 +54,10 @@ const routes = [
   {
     path: '/edit',
     component: EditInfo
+  },
+  {
+    path: '/qrcode',
+    component: QRcode
   }
 ]
 
