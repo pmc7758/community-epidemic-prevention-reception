@@ -21,7 +21,7 @@
     </van-cell-group>
     <p/>
     <van-cell-group>
-      <van-cell title="修改密码" is-link to='/info'/>
+      <van-cell title="修改密码" is-link to='/editPwd'/>
     </van-cell-group>
   </div>
 </template>

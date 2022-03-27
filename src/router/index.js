@@ -10,6 +10,7 @@ import Info from '@/views/user/Info.vue'
 import EditInfo from '@/views/user/EditInfo'
 import QRcode from '@/views/user/QRcode'
 import EditEmail from '@/views/user/EditEmail'
+import EditPwd from '@/views/user/EditPwd'
 import { getToken } from '@/utils/token'
 
 Vue.use(VueRouter)
@@ -64,6 +65,10 @@ const routes = [
     name: 'EditEmail',
     path: '/editEmail',
     component: EditEmail
+  },
+  {
+    path: '/editPwd',
+    component: EditPwd
   }
 ]
 
