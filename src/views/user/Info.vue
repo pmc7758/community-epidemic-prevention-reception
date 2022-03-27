@@ -17,7 +17,7 @@
     </van-cell-group>
     <p/>
     <van-cell-group>
-      <van-cell title="邮箱" :value="user.email" is-link to='/info'/>
+      <van-cell title="邮箱" :value="user.email" is-link :to="{ name:'EditEmail', params: { email : this.user.email }}"/>
     </van-cell-group>
     <p/>
     <van-cell-group>

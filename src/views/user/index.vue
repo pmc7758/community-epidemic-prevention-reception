@@ -8,6 +8,11 @@
       src="https://img01.yzcdn.cn/vant/cat.jpeg"
     />
     </div>
+    <van-grid :column-num="3" square>
+      <van-grid-item icon="photo-o" icon-prefix="iconfont my-icon-tiwendan" text="体温行程信息上传" />
+      <van-grid-item icon="photo-o" icon-prefix="iconfont my-icon-tiwendan" text="疫苗信息上传" />
+      <van-grid-item icon="photo-o" icon-prefix="iconfont my-icon-tiwendan" text="核酸结果上传" />
+    </van-grid>
     <van-cell-group>
       <van-cell title="出行码" icon="location-o" is-link icon-prefix="iconfont my-icon-erweima" to='/qrcode'/>
     </van-cell-group>
@@ -15,9 +20,6 @@
     <van-cell-group>
       <van-cell title="个人信息" icon="location-o" is-link icon-prefix="iconfont my-icon-wodekehu" to='/info'/>
       <van-cell title="需求单" icon="tuichudenglu" is-link icon-prefix="iconfont my-icon-wodedingdan"/>
-      <van-cell title="体温行程信息上传" icon="tuichudenglu" is-link icon-prefix="iconfont my-icon-tiwendan"/>
-      <van-cell title="疫苗信息上传" icon="tuichudenglu" is-link icon-prefix="iconfont my-icon-tiwendan"/>
-      <van-cell title="核酸结果上传" icon="tuichudenglu" is-link icon-prefix="iconfont my-icon-tiwendan"/>
     </van-cell-group>
     <p/>
     <van-cell-group>
@@ -51,7 +53,7 @@ export default {
 <style scope>
 .top {
   margin-top: 50px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   display: flex;
   justify-content: center
 }

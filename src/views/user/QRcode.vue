@@ -4,7 +4,7 @@
     <van-row align="center">
         <van-col span="3"></van-col>
         <van-col id="qrimg" span="18" >
-            <vue-qr :colorDark="colorDark" :colorLight="colorLight" :bgSrc='src' :text="text" :size="240"></vue-qr>
+            <vue-qr :colorDark="colorDark" :colorLight="colorLight" :text="text" :size="240"></vue-qr>
         </van-col>
         <van-col span="3"></van-col>
     </van-row>
@@ -40,7 +40,7 @@ export default {
 
 <style scoped>
 .van-row {
-    margin-top: 80px;
+    margin-top: 70px;
     margin-bottom: 50px;
 }
 #qrimg {
