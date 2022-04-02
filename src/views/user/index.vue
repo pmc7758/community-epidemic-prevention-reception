@@ -8,10 +8,10 @@
       src="https://img01.yzcdn.cn/vant/cat.jpeg"
     />
     </div>
-    <van-grid :column-num="3" square>
-      <van-grid-item icon="photo-o" icon-prefix="iconfont my-icon-tiwendan" text="体温行程信息上传" />
-      <van-grid-item icon="photo-o" icon-prefix="iconfont my-icon-tiwendan" text="疫苗信息上传" />
-      <van-grid-item icon="photo-o" icon-prefix="iconfont my-icon-tiwendan" text="核酸结果上传" />
+    <van-grid :column-num="3" square icon-size="20px">
+      <van-grid-item icon="photo-o" icon-prefix="my m-icon-A" text="体温行程信息上传" to='/trip'/>
+      <van-grid-item icon="photo-o" icon-prefix="my m-icon-yimiaodazhen" text="疫苗信息上传" to='/vaccines'/>
+      <van-grid-item icon="photo-o" icon-prefix="my m-icon-hesuan" text="核酸结果上传" to='/nainfo'/>
     </van-grid>
     <van-cell-group>
       <van-cell title="出行码" icon="location-o" is-link icon-prefix="iconfont my-icon-erweima" to='/qrcode'/>

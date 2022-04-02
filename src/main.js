@@ -10,6 +10,7 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
 import '@/styles/icon.css'
 import '@/styles/icono.css'
+import '@/styles/iconi.css'
 
 Vue.use(Uploader)
 Vue.use(Radio)

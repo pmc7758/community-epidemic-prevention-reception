@@ -12,6 +12,9 @@ import QRcode from '@/views/user/QRcode'
 import EditEmail from '@/views/user/EditEmail'
 import EditPwd from '@/views/user/EditPwd'
 import { getToken } from '@/utils/token'
+import NucleicAcidInfo from '@/views/information/NucleicAcidInfo'
+import Trip from '@/views/information/Trip'
+import Vaccines from '@/views/information/Vaccines'
 
 Vue.use(VueRouter)
 
@@ -69,6 +72,18 @@ const routes = [
   {
     path: '/editPwd',
     component: EditPwd
+  },
+  {
+    path: '/nainfo',
+    component: NucleicAcidInfo
+  },
+  {
+    path: '/trip',
+    component: Trip
+  },
+  {
+    path: '/vaccines',
+    component: Vaccines
   }
 ]
 
