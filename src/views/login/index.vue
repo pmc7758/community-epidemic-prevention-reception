@@ -58,7 +58,7 @@ export default {
       this.isLoading = false
     },
     onClickLeft () {
-      this.$router.push('/')
+      this.$router.back()
     }
   }
 }

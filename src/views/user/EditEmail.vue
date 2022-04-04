@@ -41,7 +41,7 @@ export default {
 
     },
     onClickLeft () {
-      this.$router.push('/info')
+      this.$router.back()
     },
     code () {
       this.disabled = true

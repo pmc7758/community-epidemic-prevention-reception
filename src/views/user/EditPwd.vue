@@ -42,7 +42,7 @@ export default {
 
     },
     onClickLeft () {
-      this.$router.push('/info')
+      this.$router.back()
     }
   }
 }

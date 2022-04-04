@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     onClickLeft () {
-      this.$router.push('/layout/user')
+      this.$router.back()
     },
     getUserInfo () {
       API.getUserInfo(this.user.id)

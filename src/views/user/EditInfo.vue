@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     onClickLeft () {
-      this.$router.push('/info')
+      this.$router.back()
     },
     saveUser () {
       console.log(this.user)

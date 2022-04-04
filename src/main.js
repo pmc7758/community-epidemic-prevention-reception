@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'amfe-flexible'
-import { Form, Field, NavBar, Button, Tabbar, TabbarItem, Grid, GridItem, Swipe, SwipeItem, Lazyload, Image as VanImage, Cascader, Popup, NoticeBar, List, Card, SubmitBar, Search, Col, Row, Notify, Cell, CellGroup, Icon, Divider, RadioGroup, Radio, Uploader } from 'vant'
+import { Form, Field, NavBar, Button, Tabbar, TabbarItem, Grid, GridItem, Swipe, SwipeItem, Lazyload, Image as VanImage, Cascader, Popup, NoticeBar, List, Card, SubmitBar, Search, Col, Row, Notify, Cell, CellGroup, Icon, Divider, RadioGroup, Radio, Uploader, PullRefresh, Tag, Toast } from 'vant'
 import Echarts from '@/plugins/echarts'
 import '../node_modules/echarts/map/js/china'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
@@ -12,6 +12,9 @@ import '@/styles/icon.css'
 import '@/styles/icono.css'
 import '@/styles/iconi.css'
 
+Vue.use(Toast)
+Vue.use(Tag)
+Vue.use(PullRefresh)
 Vue.use(Uploader)
 Vue.use(Radio)
 Vue.use(RadioGroup)
