@@ -54,6 +54,7 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  // 绑定全局对象
   store,
   render: h => h(App),
   beforeCreate () {

@@ -52,7 +52,7 @@ export default {
       loginAPI.login(this.user)
         .then(response => {
           setToken(response.data)
-          console.log(response.data)
+          this.$store.dispatch('getUserInfo')
           this.$router.push('/layout/user')
         })
       this.isLoading = false

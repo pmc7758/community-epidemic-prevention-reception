@@ -34,7 +34,6 @@ export default {
   },
   mounted () {
     this.email = this.$route.params.email
-    console.log(this.email)
   },
   methods: {
     bindEmail () {
@@ -47,7 +46,6 @@ export default {
       this.disabled = true
       var id = setTimeout(function () {
         this.disabled = false
-        console.log('fafadffagafdf')
       }, 6000)
       clearTimeout(id)
     }

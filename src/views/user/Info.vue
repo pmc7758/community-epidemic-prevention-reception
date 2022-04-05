@@ -33,7 +33,7 @@ export default {
   data () {
     return {
       user: {
-        id: '1463021582711537666',
+        id: this.$store.getters.userId,
         avatar: [
           { url: '', isImage: true }
         ],

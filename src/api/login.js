@@ -9,3 +9,8 @@ export const login = ({ phone, password }) => request({
     password
   }
 })
+
+export const getUserInfo = () => request({
+  url: '/ucenter/member/getUserInfo',
+  method: 'GET'
+})

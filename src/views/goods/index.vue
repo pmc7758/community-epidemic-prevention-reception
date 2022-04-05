@@ -44,7 +44,7 @@ export default {
   inject: ['reload'],
   data () {
     return {
-      userId: '1463021582711537666',
+      userId: this.$store.getters.userId,
       refreshing: false,
       show: true,
       goodsList: [],
@@ -54,7 +54,7 @@ export default {
       pageSize: 5,
       total: '',
       goodsQuery: {
-        regionalId: '1461218798756454402',
+        regionalId: this.$store.getters.regionalId,
         tradeName: ''
       },
       buyCar: {}

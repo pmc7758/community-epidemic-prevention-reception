@@ -5,7 +5,7 @@
       round
       width="2.5rem"
       height="2.5rem"
-      src="https://img01.yzcdn.cn/vant/cat.jpeg"
+      :src="avatar"
     />
     </div>
     <van-grid :column-num="3" square icon-size="20px">
@@ -29,19 +29,20 @@
 </template>
 
 <script>
-import { getToken, removeToken } from '@/utils/token'
+import { removeToken } from '@/utils/token'
+import { mapGetters } from 'vuex'
 
 export default {
   data () {
     return {
-      realName: '',
-      avatar: ''
     }
   },
+  computed: {
+    ...mapGetters([
+      'avatar'
+    ])
+  },
   methods: {
-    getToken () {
-      getToken()
-    },
     logout () {
       removeToken()
       this.$router.push('/')
