@@ -72,7 +72,6 @@ export default {
     plus (item) {
       item.selected += 1
       this.buyCar[item.id] = item.selected
-      console.log(this.buyCar)
     },
     minus (item) {
       // 当为零购物车临时状态修改
@@ -85,7 +84,6 @@ export default {
           delete this.buyCar[item.id]
         }
       }
-      console.log(this.buyCar)
     },
     // 搜索
     onSearch () {
