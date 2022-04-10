@@ -105,7 +105,7 @@ export default {
     saveTrip () {
       tripAPI.saveTrip(this.trip)
         .then(response => {
-          this.$toast.success(response.message)
+          this.$toast.success('提交成功')
         })
     },
     isDisabled () {
@@ -119,7 +119,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .van-checkbox__label {
   text-align: justify;
 }
