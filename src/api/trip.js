@@ -6,3 +6,13 @@ export const saveTrip = (trip) => request({
   method: 'POST',
   data: trip
 })
+
+export const getTripListByPage = (current, limit, memberId) => request({
+  url: `/pac/reception/user/getTripListByMemberId/${current}/${limit}/${memberId}`,
+  method: 'GET'
+})
+
+export const deleteTrip = (id) => request({
+  url: `/pac/reception/user/deleteTrip/${id}`,
+  method: 'DELETE'
+})

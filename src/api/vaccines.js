@@ -6,3 +6,13 @@ export const saveVaccines = (vaccines) => request({
   method: 'POST',
   data: vaccines
 })
+
+export const getVacListByPage = (current, limit, memberId) => request({
+  url: `/pac/reception/user/getVacListByMemberId/${current}/${limit}/${memberId}`,
+  method: 'GET'
+})
+
+export const deleteVac = (id) => request({
+  url: `/pac/reception/user/deleteVac/${id}`,
+  method: 'DELETE'
+})

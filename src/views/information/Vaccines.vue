@@ -2,7 +2,7 @@
   <div>
     <van-nav-bar @click-left="onClickLeft" left-arrow title="疫苗信息上传">
         <template #right>
-            <van-icon class-prefix="iconfont icon-icon_xinyong_xianxing_jijin-262" name="search" size="20" />
+            <van-icon class-prefix="iconfont icon-icon_xinyong_xianxing_jijin-262" name="search" size="20" @click="toHis"/>
         </template>
     </van-nav-bar>
     <van-form>
@@ -62,6 +62,7 @@
       <van-field
         name="承诺保证"
         label=""
+        v-if="controller"
       >
         <template #input>
           <van-checkbox v-model="vaccines.isPromise" checked-color="red" @click="isDisabled">
@@ -71,7 +72,7 @@
         </template>
       </van-field>
       <div style="margin: 16px;">
-          <van-button :disabled="disabled" round block type="info" native-type="submit" @click="saveVaccines">提交体温行程记录</van-button>
+          <van-button v-if="controller" :disabled="disabled" round block type="info" native-type="submit" @click="saveVaccines">提交疫苗接种记录</van-button>
       </div>
     </van-form>
   </div>
@@ -94,10 +95,20 @@ export default {
         image: '',
         isPromise: false
       },
+      controller: true,
       fileList: [],
       showCalendar: false,
       minDate: new Date(2018, 0, 1),
       disabled: true
+    }
+  },
+  created () {
+    if (this.$route.query && this.$route.query.obj) {
+      this.controller = false
+      this.vaccines = this.$route.query.obj
+      var file = {}
+      file.url = this.vaccines.image
+      this.fileList.push(file)
     }
   },
   methods: {
@@ -137,6 +148,9 @@ export default {
       } else {
         this.disabled = true
       }
+    },
+    toHis () {
+      this.$router.push('/HisVac')
     }
   }
 }

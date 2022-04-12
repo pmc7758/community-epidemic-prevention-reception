@@ -10,9 +10,9 @@
     </van-row>
     <van-notice-bar left-icon="volume-o" scrollable :text="news" />
     <van-grid clickable :column-num="3">
-        <van-grid-item icon="home-o" icon-prefix="my m-icon-hesuan" text="核酸结果" to="" />
-        <van-grid-item icon="home-o" icon-prefix="my m-icon-yimiaodazhen" text="疫苗信息" to="" />
-        <van-grid-item icon="search" icon-prefix="my m-icon-A" text="出行信息" url="" />
+        <van-grid-item icon="home-o" icon-prefix="my m-icon-hesuan" text="核酸结果" to="/HisNa" />
+        <van-grid-item icon="home-o" icon-prefix="my m-icon-yimiaodazhen" text="疫苗信息" to="/HisVac" />
+        <van-grid-item icon="search" icon-prefix="my m-icon-A" text="出行信息" to="/HisTrip" />
     </van-grid>
   </div>
 </template>

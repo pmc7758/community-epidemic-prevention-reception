@@ -15,6 +15,9 @@ import { getToken } from '@/utils/token'
 import NucleicAcidInfo from '@/views/information/NucleicAcidInfo'
 import Trip from '@/views/information/Trip'
 import Vaccines from '@/views/information/Vaccines'
+import HisNa from '@/views/information/Historical_NucleicAcidInfo'
+import HisTrip from '@/views/information/Historical_Trip'
+import HisVac from '@/views/information/Historical_Vaccines'
 
 Vue.use(VueRouter)
 
@@ -84,7 +87,20 @@ const routes = [
   {
     path: '/vaccines',
     component: Vaccines
+  },
+  {
+    path: '/HisNa',
+    component: HisNa
+  },
+  {
+    path: '/HisTrip',
+    component: HisTrip
+  },
+  {
+    path: '/HisVac',
+    component: HisVac
   }
+
 ]
 
 const router = new VueRouter({

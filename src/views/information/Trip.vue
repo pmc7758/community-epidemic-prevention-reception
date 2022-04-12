@@ -2,7 +2,7 @@
   <div>
     <van-nav-bar @click-left="onClickLeft" left-arrow title="体温行程信息上传">
         <template #right>
-            <van-icon class-prefix="iconfont icon-icon_xinyong_xianxing_jijin-262" name="search" size="20" />
+            <van-icon class-prefix="iconfont icon-icon_xinyong_xianxing_jijin-262" name="search" size="20" @click="toHis"/>
         </template>
     </van-nav-bar>
     <van-form>
@@ -62,6 +62,7 @@
       </van-field>
       <!-- 承诺 -->
       <van-field
+          v-if="controller"
           name="承诺保证"
           label=""
       >
@@ -73,7 +74,7 @@
         </template>
       </van-field>
       <div style="margin: 16px;">
-          <van-button :disabled="disabled" round block type="info" native-type="submit" @click="saveTrip">提交体温行程记录</van-button>
+          <van-button v-if="controller" :disabled="disabled" round block type="info" native-type="submit" @click="saveTrip">提交体温行程记录</van-button>
       </div>
     </van-form>
   </div>
@@ -85,6 +86,7 @@ import * as tripAPI from '@/api/trip'
 export default {
   data () {
     return {
+      controller: true,
       disabled: true,
       trip: {
         memberId: this.$store.getters.userId,
@@ -96,6 +98,12 @@ export default {
         isFallIll: true,
         isSafeArea: true
       }
+    }
+  },
+  created () {
+    if (this.$route.query && this.$route.query.obj) {
+      this.controller = false
+      this.trip = this.$route.query.obj
     }
   },
   methods: {
@@ -114,6 +122,9 @@ export default {
       } else {
         this.disabled = true
       }
+    },
+    toHis () {
+      this.$router.push('/HisTrip')
     }
   }
 }

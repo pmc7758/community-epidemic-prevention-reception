@@ -2,7 +2,7 @@
   <div>
     <van-nav-bar @click-left="onClickLeft" left-arrow title="核酸结果上传">
         <template #right>
-            <van-icon class-prefix="iconfont icon-icon_xinyong_xianxing_jijin-262" name="search" size="20" />
+            <van-icon v-if="controller" class-prefix="iconfont icon-icon_xinyong_xianxing_jijin-262" name="search" size="20" @click="toHis"/>
         </template>
     </van-nav-bar>
     <van-form>
@@ -76,6 +76,7 @@
       </van-field>
       <!-- 承诺 -->
       <van-field
+        v-if="controller"
         name="承诺保证"
         label=""
       >
@@ -87,7 +88,7 @@
         </template>
       </van-field>
       <div style="margin: 16px;">
-          <van-button :disabled="disabled" round block type="info" native-type="submit" @click="saveNucleic">提交体温行程记录</van-button>
+          <van-button v-if="controller" :disabled="disabled" round block type="info" native-type="submit" @click="saveNucleic">提交核酸检测结果</van-button>
       </div>
     </van-form>
   </div>
@@ -100,6 +101,7 @@ import * as nucleicAPI from '@/api/nucleic'
 export default {
   data () {
     return {
+      controller: true,
       nucleicAcid: {
         memberId: this.$store.getters.userId,
         status: '0',
@@ -114,6 +116,17 @@ export default {
       isPromise: false,
       showPicker: false,
       typeDisabled: true
+    }
+  },
+  created () {
+    if (this.$route.query && this.$route.query.obj) {
+      this.controller = false
+      this.nucleicAcid = this.$route.query.obj
+      this.nucleicAcid.status = this.nucleicAcid.status === 1 ? '1' : '0'
+      var file = {}
+      file.url = this.nucleicAcid.voucher
+      this.fileList.push(file)
+      this.changeStatus()
     }
   },
   methods: {
@@ -193,6 +206,9 @@ export default {
       var second = date.getSeconds()
       second = second < 10 ? '0' + second : second
       return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second
+    },
+    toHis () {
+      this.$router.push('/HisNa')
     }
   }
 }

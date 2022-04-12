@@ -152,7 +152,6 @@ export default {
       this.total = res.total // 数据总条数
       // 合并数组
       this.goodsList = this.goodsList.concat(rows)
-      console.log(this.goodsList)
 
       // 如果合并之后的数组长度大于返回的数据总条数 , 数据加载完毕
       if (this.goodsList.length >= this.total) {

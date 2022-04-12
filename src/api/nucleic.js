@@ -6,3 +6,13 @@ export const saveNucleic = (nucleic) => request({
   method: 'POST',
   data: nucleic
 })
+
+export const getNucleicListByPage = (current, limit, memberId) => request({
+  url: `/pac/reception/user/getTestListByMemberId/${current}/${limit}/${memberId}`,
+  method: 'GET'
+})
+
+export const deleteNucleicTest = (id) => request({
+  url: `/pac/reception/user/deleteNucleicTest/${id}`,
+  method: 'DELETE'
+})
