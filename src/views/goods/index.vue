@@ -142,6 +142,7 @@ export default {
         return
       }
 
+      // 添加一个已选属性
       const newrows = []
       rows.map((item, index) => {
         newrows.push(Object.assign(item, { selected: 0 }))

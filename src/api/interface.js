@@ -3,7 +3,7 @@ import base from './base'
 
 const api = {
   getDataInfo (params) {
-    return get('http://api.tianapi.com/txapi/ncov/index1', params)
+    return get('http://api.tianapi.com/txapi/ncov/index', params)
   },
   /**
      * 各个省市疫情数据
