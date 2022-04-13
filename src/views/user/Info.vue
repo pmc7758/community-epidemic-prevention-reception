@@ -4,7 +4,7 @@
     <van-cell-group>
       <van-cell center title="头像" is-link to=''>
         <template #right-icon>
-            <van-uploader :max-count="1" v-model="user.avatar" multiple />
+            <van-uploader :max-count="1" v-model="user.avatar" :after-read="afterRead" />
         </template>
       </van-cell>
     </van-cell-group>
@@ -27,7 +27,9 @@
 </template>
 
 <script>
+import * as serviceAPI from '@/api/service'
 import * as API from '@/api/index'
+import * as memberAPI from '@/api/member'
 
 export default {
   data () {
@@ -67,6 +69,23 @@ export default {
     },
     submitUser () {
       this.$bus.$emit('user', this.user)
+    },
+    afterRead (file) {
+      const fd = new FormData()
+      fd.append('file', file.file)
+      fd.append('fileType', 'file')
+      file.status = 'uploading'
+      file.message = '上传中...'
+      serviceAPI.uploadFile(fd)
+        .then(response => {
+          this.user.avatar[0].url = response.data
+          var avatar = response.data
+          memberAPI.updateAvatar(avatar, this.$store.getters.userId)
+            .then(response => {
+              this.$toast.success('修改头像成功')
+            })
+        })
+      file.status = 'done'
     }
   }
 }
