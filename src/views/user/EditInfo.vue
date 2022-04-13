@@ -61,7 +61,6 @@ export default {
 
   mounted () {
     this.$bus.$on('user', (value) => {
-      console.log(value.sex)
       value.sex = (value.sex === '男') ? '2' : '1'
       this.user = value
     })
