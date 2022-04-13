@@ -46,6 +46,8 @@
 </template>
 
 <script>
+import * as memberAPI from '@/api/member'
+
 export default {
   data () {
     return {
@@ -73,7 +75,12 @@ export default {
       this.$router.back()
     },
     saveUser () {
+      delete this.user.avatar
       console.log(this.user)
+      memberAPI.saveOrUpdateMember(this.user, false)
+        .then(response => {
+          this.$toast.success('成功修改基本信息')
+        })
     }
   }
 }
