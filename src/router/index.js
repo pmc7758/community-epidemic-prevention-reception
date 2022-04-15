@@ -18,6 +18,7 @@ import Vaccines from '@/views/information/Vaccines'
 import HisNa from '@/views/information/Historical_NucleicAcidInfo'
 import HisTrip from '@/views/information/Historical_Trip'
 import HisVac from '@/views/information/Historical_Vaccines'
+import Notice from '@/views/user/notice'
 
 Vue.use(VueRouter)
 
@@ -79,6 +80,10 @@ const routes = [
   {
     path: '/nainfo',
     component: NucleicAcidInfo
+  },
+  {
+    path: '/notice',
+    component: Notice
   },
   {
     path: '/trip',

@@ -11,6 +11,7 @@ import 'swiper/swiper-bundle.css'
 import '@/styles/icon.css'
 import '@/styles/icono.css'
 import '@/styles/iconi.css'
+import '@/styles/iconk.css'
 
 Vue.use(Dialog)
 Vue.use(DatetimePicker)
