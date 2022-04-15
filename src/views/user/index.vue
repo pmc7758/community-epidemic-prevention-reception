@@ -45,6 +45,7 @@ export default {
   methods: {
     logout () {
       removeToken()
+      this.$store.dispatch('logout')
       this.$router.push('/')
     }
   }

@@ -17,3 +17,9 @@ export const updateAvatar = (avatar, memberId) => request({
     'Content-Type': 'application/x-www-form-urlencoded'
   }
 })
+
+export const updatePwd = (updatePwd) => request({
+  url: '/ucenter/member/updatePwd',
+  method: 'POST',
+  data: updatePwd
+})

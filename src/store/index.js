@@ -38,6 +38,13 @@ export default new Vuex.Store({
           reject(error)
         })
       })
+    },
+
+    logout ({ commit, state }) {
+      commit('SET_AVATAR', '')
+      commit('SET_USERID', '')
+      commit('SET_REGIONALID', '')
+      sessionStorage.removeItem('vuex')
     }
   },
   getters: {
