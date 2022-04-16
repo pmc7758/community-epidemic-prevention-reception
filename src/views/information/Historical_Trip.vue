@@ -63,19 +63,13 @@ export default {
         return
       }
 
-      let rows = res.records
+      const rows = res.records
       // 如果没有返回LIST 或 LIST是空数组,证明没有数据了，可以设置finished为ture
       if (rows == null || rows.length === 0) {
         this.loading = false
         this.finished = true
         return
       }
-
-      const newrows = []
-      rows.map((item, index) => {
-        newrows.push(Object.assign(item, { selected: 0 }))
-      })
-      rows = newrows
 
       this.loading = false
       this.total = res.total // 数据总条数
