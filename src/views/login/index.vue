@@ -41,20 +41,21 @@ export default {
     return {
       isLoading: false,
       user: {
-        phone: '',
-        password: ''
+        phone: '17607750062',
+        password: '123456'
       }
     }
   },
   methods: {
-    login () {
+    async login () {
       this.isLoading = true
-      loginAPI.login(this.user)
+      await loginAPI.login(this.user)
         .then(response => {
           setToken(response.data)
-          this.$store.dispatch('getUserInfo')
-          this.$router.push('/layout/user')
         })
+      // 里面是异步执行，有可能会页面跳转了，数据没用存到vuex中，所以要把路由跳转放方法外面
+      await this.$store.dispatch('getUserInfo')
+      this.$router.push('/layout/user')
       this.isLoading = false
     },
     onClickLeft () {

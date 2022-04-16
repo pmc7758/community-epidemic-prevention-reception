@@ -39,8 +39,7 @@ import * as noticeAPI from '@/api/notice'
 export default {
   data () {
     return {
-      notice: {},
-      regionalId: this.$store.getters.regionalId
+      notice: {}
     }
   },
   mounted () {
@@ -51,7 +50,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'avatar'
+      'avatar',
+      'regionalId'
     ])
   },
   methods: {
