@@ -12,3 +12,14 @@ export const submitOrder = (userId, buyCar) => request({
   method: 'POST',
   data: buyCar
 })
+
+export const getOrderListByPage = (current, limit, orderQuery) => request({
+  url: `/whouse/order/getOrderListByPage/${current}/${limit}`,
+  method: 'POST',
+  data: orderQuery
+})
+
+export const deleteOrder = (orderId) => request({
+  url: `/whouse/order/deleteOrder/${orderId}`,
+  method: 'DELETE'
+})

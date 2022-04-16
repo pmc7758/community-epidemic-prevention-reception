@@ -22,7 +22,7 @@
     <van-cell-group>
       <van-cell title="个人信息" icon="location-o" is-link icon-prefix="iconfont my-icon-wodekehu" to='/info'/>
       <van-cell title="社区公告" icon="tuichudenglu" is-link icon-prefix="iconfont icon--gonggaoguanli" to='/notice'/>
-      <van-cell title="需求单" icon="tuichudenglu" is-link icon-prefix="iconfont my-icon-wodedingdan"/>
+      <van-cell title="需求单" icon="tuichudenglu" is-link icon-prefix="iconfont my-icon-wodedingdan" to="/order" />
     </van-cell-group>
     <p/>
     <van-cell-group>
