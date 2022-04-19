@@ -4,8 +4,9 @@
       <van-list v-model="loading" :finished="finished" finished-text="没有更多货物了" @load="onLoad">
         <van-card
           v-for="(item, id) in orderList" :key="id"
-          :title="item.tradeName + item.status "
+          :title="item.tradeName "
           :thumb="item.picture"
+          :tag="formStatus(item.status)"
           centered >
 
             <template #tags>
@@ -15,6 +16,7 @@
 
             <template #footer>
               <van-button @click="deleteOrder(item.id)" size="mini" icon="cross" round color="#7232dd"></van-button>
+              <van-button @click="finishOrder(item.id)" size="mini" icon="success" round color="#7232dd"></van-button>
             </template>
         </van-card>
       </van-list>
@@ -84,6 +86,21 @@ export default {
       this.getOrderListByPage()
     },
 
+    formStatus (status) {
+      if (status === 0) {
+        return '未处理'
+      }
+      if (status === 1) {
+        return '配送中'
+      }
+      if (status === 2) {
+        return '已拒接'
+      }
+      if (status === 3) {
+        return '已完成'
+      }
+    },
+
     deleteOrder (id) {
       Dialog.confirm({
         message: '该操作会永久删除该需求单信息'
@@ -91,6 +108,20 @@ export default {
         .then(() => {
           goodsAPI.deleteOrder(id)
           this.$toast.success('成功删除')
+          this.$router.go(0)
+        })
+        .catch(() => {
+          // on cancel
+        })
+    },
+
+    finishOrder (id) {
+      Dialog.confirm({
+        message: '接收到相关货物，完成该需求单'
+      })
+        .then(() => {
+          goodsAPI.finishOrder(id)
+          this.$toast.success('成功接收')
           this.$router.go(0)
         })
         .catch(() => {

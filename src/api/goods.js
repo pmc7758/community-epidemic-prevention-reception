@@ -23,3 +23,8 @@ export const deleteOrder = (orderId) => request({
   url: `/whouse/order/deleteOrder/${orderId}`,
   method: 'DELETE'
 })
+
+export const finishOrder = (orderId) => request({
+  url: `/whouse/order/finishOrder/${orderId}`,
+  method: 'GET'
+})
