@@ -29,6 +29,7 @@ import * as nucleicAPI from '@/api/nucleic'
 import { Dialog } from 'vant'
 
 export default {
+  inject: ['reload'],
   data () {
     return {
       refreshing: false,
@@ -111,8 +112,10 @@ export default {
       })
         .then(() => {
           nucleicAPI.deleteNucleicTest(id)
-          this.$toast.success('成功删除')
-          this.$router.go(0)
+            .then(() => {
+              this.$toast.success('成功删除')
+              this.reload()
+            })
         })
         .catch(() => {
           // on cancel

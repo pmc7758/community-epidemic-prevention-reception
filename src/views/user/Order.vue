@@ -28,6 +28,7 @@ import { Dialog } from 'vant'
 import * as goodsAPI from '@/api/goods'
 
 export default {
+  inject: ['reload'],
   data () {
     return {
       orderList: [],
@@ -107,8 +108,10 @@ export default {
       })
         .then(() => {
           goodsAPI.deleteOrder(id)
-          this.$toast.success('成功删除')
-          this.$router.go(0)
+            .then(() => {
+              this.$toast.success('成功删除')
+              this.reload()
+            })
         })
         .catch(() => {
           // on cancel
@@ -121,8 +124,10 @@ export default {
       })
         .then(() => {
           goodsAPI.finishOrder(id)
-          this.$toast.success('成功接收')
-          this.$router.go(0)
+            .then(() => {
+              this.$toast.success('成功接收')
+              this.reload()
+            })
         })
         .catch(() => {
           // on cancel

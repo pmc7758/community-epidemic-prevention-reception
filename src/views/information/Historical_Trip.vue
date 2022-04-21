@@ -30,6 +30,7 @@ import * as tripAPI from '@/api/trip'
 import { Dialog } from 'vant'
 
 export default {
+  inject: ['reload'],
   data () {
     return {
       refreshing: false,
@@ -112,8 +113,10 @@ export default {
       })
         .then(() => {
           tripAPI.deleteTrip(id)
-          this.$toast.success('成功删除')
-          this.$router.go(0)
+            .then(() => {
+              this.$toast.success('成功删除')
+              this.reload()
+            })
         })
         .catch(() => {
           // on cancel
