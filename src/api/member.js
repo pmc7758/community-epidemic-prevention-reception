@@ -23,3 +23,20 @@ export const updatePwd = (updatePwd) => request({
   method: 'POST',
   data: updatePwd
 })
+
+export const sendCode = (email) => request({
+  url: '/email/code',
+  method: 'POST',
+  data: qs.stringify({
+    email: email
+  }),
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  }
+})
+
+export const bindEmail = (bindEmailDTO) => request({
+  url: '/pac/reception/user/bindEmail',
+  method: 'POST',
+  data: bindEmailDTO
+})
