@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-nav-bar @click-left="onClickLeft" left-arrow title="密码更改"/>
-    <van-form>
+    <van-form ref="updatePwdForm">
         <van-field
             v-model="updatePwd.oldPwd"
             name="旧密码"
@@ -48,17 +48,19 @@ export default {
   },
   methods: {
     changePwd () {
-      if (this.newPwd !== this.confirmPwd) {
-        this.$toast.fail('确认密码不一致')
-      } else {
-        memberAPI.updatePwd(this.updatePwd)
-          .then(response => {
-            this.$toast.success('修改密码成功,请重新登录')
-          })
-        removeToken()
-        this.$store.dispatch('logout')
-        this.$router.push('/login')
-      }
+      this.$refs.updatePwdForm.validate().then(() => {
+        if (this.newPwd !== this.confirmPwd) {
+          this.$toast.fail('确认密码不一致')
+        } else {
+          memberAPI.updatePwd(this.updatePwd)
+            .then(response => {
+              this.$toast.success('修改密码成功,请重新登录')
+              removeToken()
+              this.$store.dispatch('logout')
+              this.$router.push('/login')
+            })
+        }
+      })
     },
     onClickLeft () {
       this.$router.back()
