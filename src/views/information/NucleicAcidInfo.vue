@@ -5,7 +5,7 @@
             <van-icon v-if="controller" class-prefix="iconfont icon-icon_xinyong_xianxing_jijin-262" name="search" size="20" @click="toHis"/>
         </template>
     </van-nav-bar>
-    <van-form>
+    <van-form ref="nucleicForm">
       <van-field
         name="感染状态"
         label="感染状态"
@@ -153,10 +153,12 @@ export default {
       }
     },
     saveNucleic () {
-      nucleicAPI.saveNucleic(this.nucleicAcid)
-        .then(response => {
-          this.$toast.success('提交成功')
-        })
+      this.$refs.nucleicForm.validate().then(() => {
+        nucleicAPI.saveNucleic(this.nucleicAcid)
+          .then(response => {
+            this.$toast.success('提交成功')
+          })
+      })
     },
     afterRead (file) {
       const fd = new FormData()

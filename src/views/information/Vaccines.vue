@@ -5,7 +5,7 @@
             <van-icon class-prefix="iconfont icon-icon_xinyong_xianxing_jijin-262" name="search" size="20" @click="toHis"/>
         </template>
     </van-nav-bar>
-    <van-form>
+    <van-form ref="vacForm">
       <van-field
         v-model="vaccines.vaccinesName"
         name="疫苗名称"
@@ -137,10 +137,12 @@ export default {
       file.tatus = 'done'
     },
     saveVaccines () {
-      vaccinesAPI.saveVaccines(this.vaccines)
-        .then(response => {
-          this.$toast.success('提交成功')
-        })
+      this.$refs.vacForm.validate().then(() => {
+        vaccinesAPI.saveVaccines(this.vaccines)
+          .then(response => {
+            this.$toast.success('提交成功')
+          })
+      })
     },
     isDisabled () {
       if (this.vaccines.isPromise === true) {

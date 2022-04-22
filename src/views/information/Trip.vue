@@ -5,7 +5,7 @@
             <van-icon class-prefix="iconfont icon-icon_xinyong_xianxing_jijin-262" name="search" size="20" @click="toHis"/>
         </template>
     </van-nav-bar>
-    <van-form>
+    <van-form ref="tripForm">
       <van-field
           v-model="trip.temperature"
           name="体温"
@@ -111,10 +111,12 @@ export default {
       this.$router.back()
     },
     saveTrip () {
-      tripAPI.saveTrip(this.trip)
-        .then(response => {
-          this.$toast.success('提交成功')
-        })
+      this.$refs.tripForm.validate().then(() => {
+        tripAPI.saveTrip(this.trip)
+          .then(response => {
+            this.$toast.success('提交成功')
+          })
+      })
     },
     isDisabled () {
       if (this.trip.isPromise === true) {
