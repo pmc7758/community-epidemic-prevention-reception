@@ -98,7 +98,7 @@ export default {
       if (data > 0 && data !== 0) {
         return '+' + data
       } else if (data < 0 && data !== 0) {
-        return '-' + data
+        return data
       } else {
         return data
       }
