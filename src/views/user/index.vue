@@ -17,6 +17,7 @@
     </van-grid>
     <van-cell-group>
       <van-cell title="出行码" icon="location-o" is-link icon-prefix="iconfont my-icon-erweima" to='/qrcode'/>
+      <van-cell title="社区返程申请" icon="location-o" is-link icon-prefix="iconfont icon-qianyishenqing" to='/apply'/>
     </van-cell-group>
     <p/>
     <van-cell-group>

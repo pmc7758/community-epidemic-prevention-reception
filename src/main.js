@@ -12,6 +12,7 @@ import '@/styles/icon.css'
 import '@/styles/icono.css'
 import '@/styles/iconi.css'
 import '@/styles/iconk.css'
+import '@/styles/iconp.css'
 
 Vue.use(Dialog)
 Vue.use(DatetimePicker)

@@ -20,6 +20,8 @@ import HisTrip from '@/views/information/Historical_Trip'
 import HisVac from '@/views/information/Historical_Vaccines'
 import Notice from '@/views/user/notice'
 import Order from '@/views/user/Order'
+import Apply from '@/views/information/Apply'
+import HisApply from '@/views/information/Historical_Apply'
 
 Vue.use(VueRouter)
 
@@ -99,6 +101,10 @@ const routes = [
     component: Vaccines
   },
   {
+    path: '/apply',
+    component: Apply
+  },
+  {
     path: '/HisNa',
     component: HisNa
   },
@@ -109,6 +115,10 @@ const routes = [
   {
     path: '/HisVac',
     component: HisVac
+  },
+  {
+    path: '/HisApply',
+    component: HisApply
   }
 
 ]
