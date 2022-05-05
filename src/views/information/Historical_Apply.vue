@@ -104,10 +104,10 @@ export default {
         return '未审核'
       }
       if (value === '1') {
-        return '审核通过'
+        return '申请通过'
       }
       if (value === '2') {
-        return '审核不通过'
+        return '申请不通过'
       }
     },
 
