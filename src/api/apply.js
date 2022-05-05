@@ -6,3 +6,13 @@ export const saveApply = (apply) => request({
   method: 'POST',
   data: apply
 })
+
+export const getApplyListByPage = (current, limit, memberId) => request({
+  url: `/pac/reception/user/getApplyListByMemberId/${current}/${limit}/${memberId}`,
+  method: 'GET'
+})
+
+export const deleteApply = (id) => request({
+  url: `/pac/reception/user/deleteApply/${id}`,
+  method: 'DELETE'
+})

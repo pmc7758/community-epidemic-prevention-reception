@@ -83,6 +83,7 @@ import * as serviceAPI from '@/api/service'
 import * as applyAPI from '@/api/apply'
 
 export default {
+  inject: ['reload'],
   data () {
     return {
       apply: {
@@ -102,6 +103,17 @@ export default {
       disabled: true
     }
   },
+
+  created () {
+    if (this.$route.query && this.$route.query.obj) {
+      this.controller = false
+      this.apply = this.$route.query.obj
+      var file = {}
+      file.url = this.apply.travelCard
+      this.fileList.push(file)
+    }
+  },
+
   methods: {
     onClickLeft () {
       this.$router.back()
@@ -132,6 +144,7 @@ export default {
         applyAPI.saveApply(this.apply)
           .then(response => {
             this.$toast.success('提交成功')
+            this.reload()
           })
       })
     },
