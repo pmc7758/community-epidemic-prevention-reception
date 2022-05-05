@@ -84,6 +84,7 @@
 import * as tripAPI from '@/api/trip'
 
 export default {
+  inject: ['reload'],
   data () {
     return {
       controller: true,
@@ -115,6 +116,7 @@ export default {
         tripAPI.saveTrip(this.trip)
           .then(response => {
             this.$toast.success('提交成功')
+            this.reload()
           })
       })
     },

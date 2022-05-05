@@ -99,6 +99,7 @@ import * as serviceAPI from '@/api/service'
 import * as nucleicAPI from '@/api/nucleic'
 
 export default {
+  inject: ['reload'],
   data () {
     return {
       controller: true,
@@ -157,6 +158,7 @@ export default {
         nucleicAPI.saveNucleic(this.nucleicAcid)
           .then(response => {
             this.$toast.success('提交成功')
+            this.reload()
           })
       })
     },

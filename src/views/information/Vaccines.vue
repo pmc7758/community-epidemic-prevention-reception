@@ -83,6 +83,7 @@ import * as serviceAPI from '@/api/service'
 import * as vaccinesAPI from '@/api/vaccines'
 
 export default {
+  inject: ['reload'],
   data () {
     return {
       vaccines: {
@@ -141,6 +142,7 @@ export default {
         vaccinesAPI.saveVaccines(this.vaccines)
           .then(response => {
             this.$toast.success('提交成功')
+            this.reload()
           })
       })
     },
