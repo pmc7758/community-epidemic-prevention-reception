@@ -100,8 +100,8 @@ export default {
       goodsAPI.submitOrder(this.userId, this.buyCar)
         .then(response => {
           this.$toast.success('提交成功')
+          this.reload()
         })
-      this.reload()
     },
 
     // 刷新
