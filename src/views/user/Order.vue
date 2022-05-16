@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-nav-bar @click-left="onClickLeft" left-arrow title="货物需求订单"/>
-      <van-list v-model="loading" :finished="finished" finished-text="没有更多货物了" @load="onLoad">
+      <van-list v-model="loading" :finished="finished" finished-text="没有更多订单了" @load="onLoad">
         <van-card
           v-for="(item, id) in orderList" :key="id"
           :title="item.tradeName "

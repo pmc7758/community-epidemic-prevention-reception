@@ -38,14 +38,34 @@
         :rules="[{ required: true, message: '预计到达日期不能为空' }]"
       />
       <van-calendar v-model="showCalendar" :min-date="minDate" @confirm="onConfirm" />
-      <!-- 凭证文件上传 -->
+      <!-- 凭证文件行程卡上传 -->
       <van-field
         name="uploader"
         label="行程卡"
         :rules="[{ required: true, message: '行程卡不能为空' }]"
       >
         <template #input>
-          <van-uploader v-model="fileList" :after-read="afterRead" :max-count="1" />
+          <van-uploader v-model="fileListA" :after-read="afterReadA" :max-count="1" />
+        </template>
+      </van-field>
+      <!-- 凭证文件核酸检测结果上传 -->
+      <van-field
+        name="uploader"
+        label="48小时核酸检测结果"
+        :rules="[{ required: true, message: '核酸检测结果截图不能为空' }]"
+      >
+        <template #input>
+          <van-uploader v-model="fileListB" :after-read="afterReadB" :max-count="1" />
+        </template>
+      </van-field>
+      <!-- 凭证文件健康码上传 -->
+      <van-field
+        name="uploader"
+        label="健康码"
+        :rules="[{ required: true, message: '健康码截图不能为空' }]"
+      >
+        <template #input>
+          <van-uploader v-model="fileListC" :after-read="afterReadC" :max-count="1" />
         </template>
       </van-field>
       <van-field
@@ -93,11 +113,15 @@ export default {
         trainNumber: '',
         arrivalTime: '',
         travelCard: '',
+        nucleicTest: '',
+        healthCode: '',
         stayRisk: true,
         isPromise: false
       },
       controller: true,
-      fileList: [],
+      fileListA: [],
+      fileListB: [],
+      fileListC: [],
       minDate: new Date(2018, 0, 1),
       showCalendar: false,
       disabled: true
@@ -108,9 +132,17 @@ export default {
     if (this.$route.query && this.$route.query.obj) {
       this.controller = false
       this.apply = this.$route.query.obj
-      var file = {}
-      file.url = this.apply.travelCard
-      this.fileList.push(file)
+      var fileA = {}
+      fileA.url = this.apply.travelCard
+      this.fileListA.push(fileA)
+
+      var fileB = {}
+      fileB.url = this.apply.nucleicTest
+      this.fileListB.push(fileB)
+
+      var fileC = {}
+      fileC.url = this.apply.healthCode
+      this.fileListC.push(fileC)
     }
   },
 
@@ -122,7 +154,7 @@ export default {
       this.apply.arrivalTime = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
       this.showCalendar = false
     },
-    afterRead (file) {
+    afterReadA (file) {
       const fd = new FormData()
       fd.append('file', file.file)
       fd.append('fileType', 'file')
@@ -135,7 +167,41 @@ export default {
           obj.url = response.data
           var file = []
           file.push(obj)
-          this.fileList = file
+          this.fileListA = file
+        })
+      file.tatus = 'done'
+    },
+    afterReadB (file) {
+      const fd = new FormData()
+      fd.append('file', file.file)
+      fd.append('fileType', 'file')
+      file.status = 'uploading'
+      file.message = '上传中...'
+      serviceAPI.uploadFile(fd)
+        .then(response => {
+          this.apply.nucleicTest = response.data
+          var obj = {}
+          obj.url = response.data
+          var file = []
+          file.push(obj)
+          this.fileListB = file
+        })
+      file.tatus = 'done'
+    },
+    afterReadC (file) {
+      const fd = new FormData()
+      fd.append('file', file.file)
+      fd.append('fileType', 'file')
+      file.status = 'uploading'
+      file.message = '上传中...'
+      serviceAPI.uploadFile(fd)
+        .then(response => {
+          this.apply.healthCode = response.data
+          var obj = {}
+          obj.url = response.data
+          var file = []
+          file.push(obj)
+          this.fileListC = file
         })
       file.tatus = 'done'
     },
