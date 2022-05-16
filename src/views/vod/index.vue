@@ -1,7 +1,8 @@
 <template>
   <div>
+    <van-button id="loginBtn" round v-if="!show" size="large" type="primary" to="/login">请登录后再点播视频</van-button>
     <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
-      <van-list v-model="loading" :finished="finished" finished-text="没有更多视频了" @load="onLoad">
+      <van-list v-if="show" v-model="loading" :finished="finished" finished-text="没有更多视频了" @load="onLoad">
           <van-image
             v-for="(item, id) in vodList"
             @click="toNa(item.videoSourceId)"
@@ -14,7 +15,7 @@
           />
       </van-list>
     </van-pull-refresh>
-    <van-dialog v-model="show" title="标题" show-cancel-button>
+    <van-dialog v-model="vodShow" title="标题" show-cancel-button>
       <palyer :vid = "vid"/>
     </van-dialog>
   </div>
@@ -22,13 +23,15 @@
 
 <script>
 import * as vodAPI from '@/api/vod'
+import { getToken } from '@/utils/token'
 import palyer from '../player/_vid.vue'
 
 export default {
   data () {
     return {
       vid: 'd85de79f99fe4aebb865f1d7f4ce877c',
-      show: false,
+      show: true,
+      vodShow: false,
       refreshing: false,
       vodList: [],
       loading: true,
@@ -46,7 +49,11 @@ export default {
   },
 
   mounted () {
-    this.getVodListByPage()
+    if (getToken() !== '' && getToken() !== null) {
+      this.getVodListByPage()
+    } else {
+      this.show = false
+    }
   },
 
   methods: {
@@ -110,7 +117,7 @@ export default {
 
     toNa (videoSourceId) {
       this.vid = videoSourceId
-      this.show = true
+      this.vodShow = true
     }
 
   }
