@@ -15,13 +15,13 @@
       <van-list v-if="show" v-model="loading" :finished="finished" finished-text="没有更多货物了" @load="onLoad">
         <van-card
           v-for="(item, id) in goodsList" :key="id"
-          :title="item.tradeName"
+          :title="item.tradeName + '(' + '每件' + item.quantityUnit + ')'"
           :thumb="item.picture"
           centered >
 
             <template #tags>
-              <van-tag plain type="danger">库存：{{ item.stock }}</van-tag>
-              <van-tag plain type="danger">已选：{{ item.selected }}</van-tag>
+              <van-tag plain type="danger">库存:{{ item.stock + "件" }}</van-tag>
+              <van-tag plain type="danger">已选:{{ item.selected + "件" }}</van-tag>
             </template>
 
             <template #footer>

@@ -10,7 +10,7 @@
           centered >
 
             <template #tags>
-              <van-tag plain type="danger">数量：{{ item.quantity }}</van-tag>
+              <van-tag plain type="danger">数量:{{ item.quantity + "件" }}</van-tag>
               <van-tag plain type="danger">{{ item.createTime }}</van-tag>
             </template>
 
