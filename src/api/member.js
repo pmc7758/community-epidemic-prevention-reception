@@ -40,3 +40,8 @@ export const bindEmail = (bindEmailDTO) => request({
   method: 'POST',
   data: bindEmailDTO
 })
+
+export const analysisQRCode = (memberId) => request({
+  url: `/pac/reception/user/analysisQRCode/${memberId}`,
+  method: 'GET'
+})

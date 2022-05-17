@@ -19,6 +19,7 @@
 
 <script>
 import VueQr from 'vue-qr'
+import * as memberAPI from '@/api/member'
 
 export default {
   data () {
@@ -30,9 +31,19 @@ export default {
     }
   },
   components: { VueQr },
+  mounted () {
+    this.analysisQRCode()
+  },
   methods: {
     onClickLeft () {
       this.$router.back()
+    },
+    analysisQRCode () {
+      memberAPI.analysisQRCode(this.$store.getters.userId)
+        .then(response => {
+          this.colorDark = response.data.colorDark
+          this.news = response.data.news
+        })
     }
   }
 }
