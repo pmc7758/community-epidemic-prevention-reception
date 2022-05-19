@@ -48,7 +48,6 @@ export default {
   },
   methods: {
     async login () {
-      this.isLoading = true
       await loginAPI.login(this.user)
         .then(response => {
           setToken(response.data)
@@ -56,7 +55,6 @@ export default {
       // 里面是异步执行，有可能会页面跳转了，数据没用存到vuex中，所以要把路由跳转放方法外面
       await this.$store.dispatch('getUserInfo')
       this.$router.push('/layout/user')
-      this.isLoading = false
     },
     onClickLeft () {
       this.$router.back()
