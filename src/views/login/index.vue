@@ -17,6 +17,17 @@
               placeholder="请输入密码,初始密码为手机号"
               :rules="[{ required: true, message: '密码不能为空' }]"
             />
+            <van-field
+              v-model="sms"
+              center
+              clearable
+              label="验证码"
+              placeholder="请输入结果验证"
+            >
+              <template #button>
+                <van-button size="small" type="primary" @click="getCode">{{ code }}</van-button>
+              </template>
+            </van-field>
             <div style="margin: 16px;">
                 <van-button
                   round block
@@ -39,6 +50,9 @@ import * as loginAPI from '@/api/login'
 export default {
   data () {
     return {
+      sms: '',
+      result: '',
+      code: '',
       isLoading: false,
       user: {
         phone: '17607750062',
@@ -46,8 +60,16 @@ export default {
       }
     }
   },
+  mounted () {
+    this.getCode()
+  },
   methods: {
     async login () {
+      if (this.sms !== this.result) {
+        this.$toast.fail('验证码错误')
+        this.getCode()
+        return
+      }
       this.isLoading = true
       await loginAPI.login(this.user)
         .then(response => {
@@ -59,6 +81,12 @@ export default {
     },
     onClickLeft () {
       this.$router.back()
+    },
+    getCode () {
+      const x = Math.floor(Math.random() * 10 + 1)
+      const y = Math.floor(Math.random() * 10 + 1)
+      this.result = (x + y).toString()
+      this.code = x + '  +  ' + y
     }
   }
 }

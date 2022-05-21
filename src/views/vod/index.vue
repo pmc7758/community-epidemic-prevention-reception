@@ -5,7 +5,7 @@
       <van-list v-if="show" v-model="loading" :finished="finished" finished-text="没有更多视频了" @load="onLoad">
           <van-image
             v-for="(item, id) in vodList"
-            @click="toNa(item.videoSourceId)"
+            @click="play = !play"
             :key="id"
             width="100%"
             height="100"
@@ -15,22 +15,21 @@
           />
       </van-list>
     </van-pull-refresh>
-    <van-dialog v-model="vodShow" title="标题" show-cancel-button>
-      <palyer :vid = "vid"/>
-    </van-dialog>
+    <video x5-playsinline="true" playsinline="true" webkit-playsinline="true" x5-video-player-fullscreen="true" width="100%" src="./share_d7f393d72a9d30ae2cf0aed2b2937582.mp4" autoplay v-if="play"></video>
   </div>
 </template>
 
 <script>
 import * as vodAPI from '@/api/vod'
 import { getToken } from '@/utils/token'
-import palyer from '../player/_vid.vue'
+/* import palyer from '../player/_vid.vue' */
 
 export default {
   data () {
     return {
       vid: 'd85de79f99fe4aebb865f1d7f4ce877c',
       show: true,
+      videoSrc: './share_d7f393d72a9d30ae2cf0aed2b2937582.mp4',
       vodShow: false,
       refreshing: false,
       vodList: [],
@@ -38,15 +37,16 @@ export default {
       finished: false,
       pageNo: 1,
       pageSize: 5,
+      play: false,
       vod: {
         regionalId: this.$store.getters.regionalId
       }
     }
   },
 
-  components: {
+  /* components: {
     palyer: palyer
-  },
+  }, */
 
   mounted () {
     if (getToken() !== '' && getToken() !== null) {
@@ -61,6 +61,11 @@ export default {
       this.$router.back()
     },
 
+    playVideo () {
+      console.log('faffafdsfdsf')
+      var video1 = document.getElementById('videoPlay1')// 获取视频元素
+      video1.play()
+    },
     async getVodListByPage () {
       const {
         data: res
