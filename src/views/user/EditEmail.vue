@@ -23,10 +23,10 @@
             label="验证码"
             placeholder="邮箱验证码"
         >
+          <template #button>
+            <van-button size="small" type="primary" :disabled="disabled" native-type="submit" @click="code">发送验证码</van-button>
+          </template>
         </van-field>
-        <div style="margin: 16px;">
-            <van-button round block type="info" :disabled="disabled" native-type="submit" @click="code">发送验证码</van-button>
-        </div>
         <div style="margin: 16px;">
             <van-button round block type="info" native-type="submit" @click="bindEmail">绑定邮箱</van-button>
         </div>
