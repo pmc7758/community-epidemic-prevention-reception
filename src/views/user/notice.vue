@@ -7,7 +7,9 @@
         wrapable
         :scrollable="false"
         :key="item.id"
-        :text="item.notice + ' ( 发布于 ' + item.createTime + ')'"
+        :text="item.notice + ' ( 发布于 ' + item.createTime + ')' + ' ( ' + formType(item.type) + ')'"
+        mode="link"
+        @click="to(item.id, item.type)"
     >
     </van-notice-bar>
   </div>
@@ -32,6 +34,17 @@ export default {
   methods: {
     onClickLeft () {
       this.$router.back()
+    },
+    to (id, type) {
+      if (type === '2') {
+        this.$router.push({ name: 'details', params: { nid: id } })
+      }
+    },
+    formType (value) {
+      if (value === '1') {
+        return '通知公告'
+      }
+      return '风险确认公告'
     }
   }
 }
