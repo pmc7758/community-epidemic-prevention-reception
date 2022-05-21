@@ -20,6 +20,7 @@ import HisTrip from '@/views/information/Historical_Trip'
 import HisVac from '@/views/information/Historical_Vaccines'
 import Notice from '@/views/user/notice'
 import Order from '@/views/user/Order'
+import Chat from '@/views/chat/Chat'
 import Apply from '@/views/information/Apply'
 import HisApply from '@/views/information/Historical_Apply'
 
@@ -119,6 +120,10 @@ const routes = [
   {
     path: '/HisApply',
     component: HisApply
+  },
+  {
+    path: '/chat',
+    component: Chat
   }
 
 ]

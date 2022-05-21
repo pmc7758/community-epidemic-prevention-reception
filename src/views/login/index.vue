@@ -14,7 +14,7 @@
               type="password"
               name="password"
               label="密码"
-              placeholder="请输入密码"
+              placeholder="请输入密码,初始密码为手机号"
               :rules="[{ required: true, message: '密码不能为空' }]"
             />
             <div style="margin: 16px;">
@@ -48,6 +48,7 @@ export default {
   },
   methods: {
     async login () {
+      this.isLoading = true
       await loginAPI.login(this.user)
         .then(response => {
           setToken(response.data)

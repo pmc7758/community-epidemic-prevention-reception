@@ -9,6 +9,7 @@
         fit="cover"
         :src="avatar"
       />
+      <van-icon name="chat-o" @click="toChat"/>
     </div>
     <van-grid :column-num="3" square icon-size="20px">
       <van-grid-item icon="photo-o" icon-prefix="my m-icon-A" text="体温行程信息上传" to='/trip'/>
@@ -60,6 +61,9 @@ export default {
       removeToken()
       this.$store.dispatch('logout')
       this.$router.push('/')
+    },
+    toChat () {
+      this.$router.push('/chat')
     }
   }
 }
