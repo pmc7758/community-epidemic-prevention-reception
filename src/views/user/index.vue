@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-notice-bar left-icon="volume-o" scrollable :text="notice.notice + ' ( 发布于 ' + notice.createTime + ')'" />
+    <van-notice-bar left-icon="volume-o" scrollable :text="notice.notice + ' ( 发布于 ' + notice.createTime + ')' + ' ( ' + formType(notice.type) + ')'" @click="to(notice.id, notice.type)" />
     <div class="top">
       <van-image
         round
@@ -64,6 +64,17 @@ export default {
     },
     toChat () {
       this.$router.push('/chat')
+    },
+    to (id, type) {
+      if (type === '2') {
+        this.$router.push({ name: 'details', params: { nid: id } })
+      }
+    },
+    formType (value) {
+      if (value === '1') {
+        return '通知公告'
+      }
+      return '风险确认公告'
     }
   }
 }
